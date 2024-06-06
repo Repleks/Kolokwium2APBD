@@ -1,0 +1,3 @@
+dotnet ef migrations add ShopDatabase
+
+dotnet ef database update
