@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using PrzykladoweNumer2.Context;
 using PrzykladoweNumer2.Exceptions;
 using PrzykladoweNumer2.Models;
@@ -39,6 +40,14 @@ public class ClientService(DatabaseContext context) : IClientService
                 {
                     throw new NotFoundException($"Product with id:{product.id} not found");
                 }
+            }
+            
+            var validationContext = new ValidationContext(model);
+            var results = new List<ValidationResult>();
+            Validator.ValidateObject(model, validationContext, true);
+            if(!Validator.TryValidateObject(model, validationContext, results, true))
+            {
+                throw new ArgumentException("Invalid model");
             }
 
             var order = new Order
