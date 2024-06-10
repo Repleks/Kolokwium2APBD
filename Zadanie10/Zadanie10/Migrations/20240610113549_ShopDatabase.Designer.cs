@@ -11,8 +11,8 @@ using Zadanie10.Context;
 namespace Zadanie10.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240608173632_ShopBase")]
-    partial class ShopBase
+    [Migration("20240610113549_ShopDatabase")]
+    partial class ShopDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
